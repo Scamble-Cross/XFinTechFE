@@ -1,0 +1,1 @@
+import{b as t}from"/build/_shared/chunk-2R2556QA.js";import"/build/_shared/chunk-3BTPADS5.js";import{e as r,g as a}from"/build/_shared/chunk-VP4BV6ZV.js";var e=r(a(),1),f=()=>{let o=t();(0,e.useEffect)(()=>{o("/error-404")},[o])},m=f;export{m as default};

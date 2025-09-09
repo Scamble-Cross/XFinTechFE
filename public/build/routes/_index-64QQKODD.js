@@ -1,0 +1,1 @@
+import{b as e}from"/build/_shared/chunk-2R2556QA.js";import"/build/_shared/chunk-3BTPADS5.js";import{e as f,g as r}from"/build/_shared/chunk-VP4BV6ZV.js";var o=f(r(),1);function a(){let t=e();(0,o.useEffect)(()=>{t("/dashboard")},[t])}export{a as default};
