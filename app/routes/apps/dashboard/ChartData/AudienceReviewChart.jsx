@@ -12,8 +12,7 @@ const AudienceReviewChart = () => {
 
         chart: {
             type: 'bar',
-            height: 270,
-            width: '100%',
+            height: 250,
             stacked: true,
             toolbar: {
                 show: false
@@ -33,27 +32,16 @@ const AudienceReviewChart = () => {
             bar: {
                 horizontal: false,
                 columnWidth: '35%',
-                borderRadius: 5,    
+                borderRadius: 5,
                 borderRadiusApplication: "end",
                 borderRadiusWhenStacked: "last",
             },
         },
         xaxis: {
             type: 'datetime',
-            categories: [
-                '01/02/2021 GMT',
-                '01/03/2021 GMT',
-                '01/04/2021 GMT',
-                '01/05/2021 GMT',
-                '01/06/2021 GMT',
-                '01/07/2021 GMT',
-                '01/08/2021 GMT',
-                '01/09/2021 GMT',
-                '01/10/2021 GMT',
-                '01/11/2021 GMT',
-                '01/12/2021 GMT',
-                '01/13/2021 GMT',
-
+            categories: ['01/02/2021 GMT', '01/03/2021 GMT', '01/04/2021 GMT',
+                '01/05/2021 GMT', '01/06/2021 GMT', '01/07/2021 GMT', '01/08/2021 GMT', '01/09/2021 GMT', '01/10/2021 GMT',
+                '01/11/2021 GMT', '01/12/2021 GMT', '01/13/2021 GMT'
             ],
 
             labels: {

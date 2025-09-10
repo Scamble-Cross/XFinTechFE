@@ -1,5 +1,5 @@
 {
-  "name": "remix-jampack-classic",
+  "name": "remix-jampack-compact",
   "version": "1.0.4",
   "private": true,
   "sideEffects": false,
@@ -9,7 +9,7 @@
     "dev": "concurrently \"npm run sass\" \"remix dev\"",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "start": "remix-serve ./build/index.js",
-    "sass": "sass --watch app/:app/ --quiet-deps"
+    "sass": "sass --watch app/:app/"
   },
   "dependencies": {
     "@amcharts/amcharts5": "^5.13.6",

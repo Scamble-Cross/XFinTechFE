@@ -1,6 +1,7 @@
 import { Button, Card, Col, Row } from 'react-bootstrap';
 import { ClientOnly } from "remix-utils/client-only";
 import HkProgressBar from '~/@hk-components/@hk-progressbar/@hk-progressbar';
+import ActiveUserMap from './ChartData/ActiveUserMap.client';
 
 //Images
 import UsFlag from '~/styles/fonts/flags/4x3/us.svg';
@@ -8,7 +9,6 @@ import IndianFlag from '~/styles/fonts/flags/4x3/in.svg';
 import UkFlag from '~/styles/fonts/flags/4x3/gb.svg';
 import AustralianFlag from '~/styles/fonts/flags/4x3/au.svg';
 import CanadianFlag from '~/styles/fonts/flags/4x3/ca.svg';
-import ActiveUserMap from './ChartData/ActiveUserMap.client';
 
 const ActiveUserCard = () => {
     return (

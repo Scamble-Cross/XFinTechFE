@@ -7,7 +7,6 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import { Analytics } from '@vercel/analytics/react';
 import { GlobalStateProvider } from '~/context/GolobalStateProvider';
 import styles from "~/styles/scss/style.css";
 
@@ -20,7 +19,6 @@ export const links = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
   { rel: "stylesheet", href: styles, loader: "sass" }
 ];
-
 
 export default function App() {
 
@@ -43,7 +41,7 @@ export default function App() {
           property="og:description"
           content="Explore the powerful Remix-based admin dashboard template created by Hencework. Simplify your project management and streamline workflows effortlessly."
         />
-        <meta property="og:image" content="https://remix-jampack-classic.vercel.app/og-img.png" />
+        <meta property="og:image" content="https://remix-jampack-compact.vercel.app/og-img.png" />
         <Meta />
         <Links />
       </head>
@@ -54,15 +52,8 @@ export default function App() {
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
-        <Analytics />
       </body>
     </html>
   );
-}
-
-export function headers() {
-  return {
-    "Cache-Control": "max-age=3600, public",
-  };
 }
 

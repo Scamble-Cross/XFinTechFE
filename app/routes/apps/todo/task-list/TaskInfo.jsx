@@ -6,11 +6,11 @@ import * as Icons from 'react-feather';
 import { nanoid } from 'nanoid';
 import classNames from 'classnames';
 import HkInlineEdit from '~/@hk-components/@hk-editable-component/HkInlineEdit';
+import HkDropZone from '~/@hk-components/@hk-drop-zone/HkDropZone';
 import HkAlert from '~/@hk-components/@hk-alert/@hk-alert';
 import HkChips from '~/@hk-components/@hk-chips/@hk-chips';
 import HkTooltip from '~/@hk-components/@hk-tooltip/HkTooltip';
 import HkCollapse from '~/@hk-components/@hk-collapse/@hk-collapse';
-import HkDropZone from '~/@hk-components/@hk-drop-zone/HkDropZone';
 
 
 //Images
@@ -22,6 +22,8 @@ import avatar6 from '~/assets/img/avatar6.jpg';
 import avatar7 from '~/assets/img/avatar7.jpg';
 import avatar8 from '~/assets/img/avatar8.jpg';
 import avatar13 from '~/assets/img/avatar13.jpg';
+// import img6 from '~/assets/img/6image.png';
+// import img2 from '~/assets/img/2image.png';
 import thumb1 from '~/assets/img/img-thumb1.jpg';
 
 

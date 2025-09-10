@@ -71575,6 +71575,9 @@ Project:	Jampack
   -o-transform: translateX(5px);
   transform: translateX(5px);
 }
+.hk-wrapper[data-layout=horizontal] .hk-menu .menu-content-wrap .menu-group .navbar-nav .nav-item .nav-link.active {
+  color: #007D88 !important;
+}
 .hk-wrapper[data-layout=horizontal] .hk-menu .menu-content-wrap .menu-group .navbar-nav .nav-item.active > .nav-link {
   color: #007D88 !important;
 }
@@ -72585,6 +72588,9 @@ Project:	Jampack
   -ms-transform: translateX(5px);
   -o-transform: translateX(5px);
   transform: translateX(5px);
+}
+.hk-wrapper[data-layout=navbar] .hk-menu .menu-content-wrap .menu-group .navbar-nav .nav-item .nav-link.active {
+  color: #007D88 !important;
 }
 .hk-wrapper[data-layout=navbar] .hk-menu .menu-content-wrap .menu-group .navbar-nav .nav-item.active > .nav-link {
   color: #007D88 !important;

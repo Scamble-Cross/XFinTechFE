@@ -1,7 +1,7 @@
-import { Outlet, useLocation } from '@remix-run/react';
 import classNames from 'classnames'
+import { Outlet, useLocation } from '@remix-run/react';
 
-const AuthLayout = () => {
+const AuthLayout = ({ children }) => {
     const { pathname } = useLocation();
     const lockScreenAuth = pathname.match('/auth/lock-screen');
 

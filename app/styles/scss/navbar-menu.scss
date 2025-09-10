@@ -83,6 +83,9 @@ Project:	Jampack
 									@include transform(translateX(5px));
 								}
 							}
+							&.active {
+								color: $primary !important;
+							}
 						}
 						&.active {
 							>.nav-link {

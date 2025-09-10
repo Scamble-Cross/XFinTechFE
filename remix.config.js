@@ -1,7 +1,6 @@
 /** @type {import('@remix-run/dev').AppConfig} */
 export default {
   ignoredRouteFiles: ["**/.*"],
-
   future: {
     v3_fetcherPersist: true,
     v3_relativeSplatPath: true,
@@ -9,11 +8,10 @@ export default {
     v3_singleFetch: true,
     // v3_lazyRouteDiscovery: true,
   },
-
   routes(defineRoutes) {
     return defineRoutes((route) => {
       //App routes
-      route("/", "layout/apps-layout/index.jsx", () => {
+      route("/", "layout/app-layout/index.jsx", () => {
         route("/dashboard", "routes/apps/dashboard/route.jsx", { index: true });
         route("/apps/chat/chats", "routes/apps/chat/chats/route.jsx");
         route("/apps/chat/group", "routes/apps/chat/group/route.jsx");
@@ -66,6 +64,9 @@ export default {
         route("reset-password", "routes/auth/reset-password/route.jsx");
         route("error-503", "routes/auth/error-503/route.jsx");
       })
+      //error pages
     });
   },
+
+
 };
