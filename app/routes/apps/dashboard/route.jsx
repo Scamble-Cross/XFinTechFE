@@ -1,105 +1,163 @@
-import { Col, Container, Form, InputGroup, Nav, Row, Tab } from 'react-bootstrap';
-import moment from 'moment';
-import { Calendar } from 'react-feather';
-import AudienceReviewCard from './AudienceReviewCard';
-import ReturningCustomersCard from './ReturningCustomersCard';
-import ActiveUserCard from './ActiveUserCard';
-import CustomerTable from './CustomerTable';
-import DateRangePicker from "~/assets/dist/react-bootstrap-daterangepicker/dist/index.es";
-import ChatBotInterface from '~/components/chat-bot-interface/ChatBotInterface';
+import { Container, Tab } from "react-bootstrap";
+import BlockCommon from "~/components/Common/Block";
+import TradingViewWidget from "~/components/Common/Chart";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Navigation } from "swiper/modules";
+import Effeciency from "./Effeciency";
+import Top from "./Top";
+import PE from "./PE";
+import { AnalyticsItem, BlockListMeasure, BorderBlock, MarketContainer, ProductionPackage } from "~/layout/styled";
 
 const Dashboard = () => {
+  const analyticsData = [
+    {
+      id: 1,
+      title: "Tiêu đề",
+    },
+    {
+      id: 2,
+      title: "Tiêu đề",
+    },
+    {
+      id: 3,
+      title: "Tiêu đề",
+    },
+    {
+      id: 4,
+      title: "Tiêu đề",
+    },
+    {
+      id: 5,
+      title: "Tiêu đề",
+    },
+    {
+      id: 6,
+      title: "Tiêu đề",
+    },
+    {
+      id: 7,
+      title: "Tiêu đề",
+    },
+    {
+      id: 8,
+      title: "Tiêu đề",
+    },
+    {
+      id: 9,
+      title: "Tiêu đề",
+    },
+    {
+      id: 10,
+      title: "Tiêu đề",
+    },
+  ];
 
-    return (
-        <>
-            <ChatBotInterface show={false} />
-            <Container fluid="xxl" >
-                <Tab.Container activeKey="overview">
-                    {/* Page Header */}
-                    <div className="hk-pg-header pg-header-wth-tab pt-7">
-                        <div className="d-flex">
-                            <div className="d-flex flex-wrap justify-content-between flex-1">
-                                <div className="mb-lg-0 mb-2 me-8">
-                                    <h1 className="pg-title">Welcome back</h1>
-                                    <p>Create pages using a variety of features that leverage jampack components</p>
-                                </div>
-                                <div className="pg-header-action-wrap">
-                                    <InputGroup className="w-300p">
-                                        <span className="input-affix-wrapper">
-                                            <span className="input-prefix">
-                                                <span className="feather-icon">
-                                                    <Calendar />
-                                                </span>
-                                            </span>
-                                            <DateRangePicker
-                                                initialSettings={{
-                                                    timePicker: true,
-                                                    startDate: moment().startOf('hour').toDate(),
-                                                    endDate: moment().startOf('hour').add(32, 'hour').toDate(),
-                                                    locale: {
-                                                        format: 'M/DD hh:mm A',
-                                                    },
-                                                }}
-                                            >
-                                                <Form.Control type="text" name="datetimes" />
-                                            </DateRangePicker>
+  return (
+    <>
+      <Container fluid="xxl" className="pt-4">
+        <Tab.Container activeKey="overview">
+          <BlockCommon
+            title="Báo cáo phân tích"
+            component={
+              <BorderBlock>
+                <Swiper
+                  loop={true}
+                  slidesPerView={5}
+                  spaceBetween={15}
+                  navigation={true}
+                  modules={[Pagination, Navigation]}
+                >
+                  {analyticsData.map((item) => (
+                    <SwiperSlide key={item.id}>
+                      <AnalyticsItem>
+                        <div></div>
+                        <p>{item.title}</p>
+                      </AnalyticsItem>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </BorderBlock>
+            }
+          />
+          <BlockCommon
+            title="Thị trường"
+            component={
+              <MarketContainer>
+                <TradingViewWidget />
+                <BorderBlock className="market-right">
+                  <div className="swiper-verical">
+                    <Swiper
+                      loop={true}
+                      direction="vertical"
+                      slidesPerView={"auto"}
+                      spaceBetween={15}
+                      navigation={true}
+                      modules={[Pagination, Navigation]}
+                    >
+                      {analyticsData.map((item) => (
+                        <SwiperSlide key={item.id}>
+                          <AnalyticsItem>
+                            <div></div>
+                            <p>{item.title}</p>
+                          </AnalyticsItem>
+                        </SwiperSlide>
+                      ))}
+                    </Swiper>
+                  </div>
+                </BorderBlock>
+              </MarketContainer>
+            }
+          />
+          <BlockListMeasure>
+            <Top />
+            <Effeciency />
+            <PE />
+          </BlockListMeasure>
+          <BlockCommon
+            title="Vàng và Ngoại tệ"
+            component={
+              <BorderBlock>
+                <Swiper
+                  loop={true}
+                  slidesPerView={5}
+                  spaceBetween={15}
+                  navigation={true}
+                  modules={[Pagination, Navigation]}
+                >
+                  {analyticsData.map((item) => (
+                    <SwiperSlide key={item.id}>
+                      <AnalyticsItem>
+                        <div></div>
+                        <p>{item.title}</p>
+                      </AnalyticsItem>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </BorderBlock>
+            }
+          />
+          <BlockCommon
+            title="Gói Sản phẩm VSMI"
+            component={
+              <ProductionPackage>
+                <BorderBlock>Vùng thông tin để mời KH đăng ký</BorderBlock>
+                <BorderBlock>
+                  <h3>Basic</h3>
+                  <p>Thông tin gói Basic</p>
+                  <button>Đăng ký</button>
+                </BorderBlock>
+                <BorderBlock>
+                  <h3>Premium</h3>
+                  <p>Thông tin gói Premium</p>
+                  <button>Đăng ký</button>
+                </BorderBlock>
+              </ProductionPackage>
+            }
+          />
+        </Tab.Container>
+      </Container>
+    </>
+  );
+};
 
-                                        </span>
-                                    </InputGroup>
-                                </div>
-                            </div>
-                        </div>
-                        <Nav variant="tabs" className="nav-light nav-line">
-                            <Nav.Item>
-                                <Nav.Link eventKey="overview" >
-                                    <span className="nav-link-text">Overview</span>
-                                </Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item>
-                                <Nav.Link eventKey="demo_nav_1">
-                                    <span className="nav-link-text">Analytics</span>
-                                </Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item>
-                                <Nav.Link eventKey="demo_nav_2">
-                                    <span className="nav-link-text">Operations</span>
-                                </Nav.Link>
-                            </Nav.Item>
-                        </Nav>
-                    </div>
-                    {/* /Page Header */}
-                    {/* Page Body */}
-                    <div className="hk-pg-body">
-                        <Tab.Content>
-                            <Tab.Pane eventKey="overview" >
-                                <Row>
-                                    <Col xxl={9} lg={8} md={7} className="mb-md-4 mb-3">
-                                        <AudienceReviewCard />
-                                    </Col>
-                                    <Col xxl={3} lg={4} md={5} className="mb-md-4 mb-3">
-                                        <ReturningCustomersCard />
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col md={12} className="mb-md-4 mb-3">
-                                        <ActiveUserCard />
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col md={12} className="mb-md-4 mb-3">
-                                        <CustomerTable />
-                                    </Col>
-                                </Row>
-                            </Tab.Pane>
-                            <Tab.Pane eventKey="demo_nav_1" />
-                            <Tab.Pane eventKey="demo_nav_2" />
-                        </Tab.Content>
-                    </div>
-                    {/* /Page Body */}
-                </Tab.Container>
-            </Container >
-        </>
-    )
-}
-
-export default Dashboard
+export default Dashboard;

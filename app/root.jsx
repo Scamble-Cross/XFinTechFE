@@ -17,7 +17,8 @@ export const LinksFunction = () => [
 
 export const links = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
-  { rel: "stylesheet", href: styles, loader: "sass" }
+  { rel: "stylesheet", href: styles, loader: "sass" },
+  { rel: "stylesheet", href: "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" }
 ];
 
 export default function App() {
