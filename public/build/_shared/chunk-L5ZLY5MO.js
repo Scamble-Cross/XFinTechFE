@@ -1365,7 +1365,7 @@ if (import.meta) {
     //@ts-expect-error
     "app/layout/styled.jsx"
   );
-  import.meta.hot.lastModified = "1757828700811.262";
+  import.meta.hot.lastModified = "1757953181910.2366";
 }
 var BorderBlock = dt.div`
   border: 1px solid #d9d9d9;
@@ -1587,6 +1587,146 @@ var RecommendBlock = dt.div`
     }
   }
 `;
+var SummaryAnalysis = dt.div`
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 30px;
+  & > div {
+    display: block;
+    width: 270px;
+    height: 150px;
+    background: #daeeff;
+  }
+  & > p {
+    color: #009;
+    font-size: 20px;
+    text-decoration: underline;
+  }
+`;
+var SummaryBottom = dt.div`
+  h3 {
+    font-size: 20px;
+    color: #000;
+    margin-bottom: 30px;
+  }
+`;
+var BlockPriceChart = dt.div`
+  margin-bottom: 30px;
+`;
+var PriceChartSelect = dt.div`
+  margin-bottom: 30px;
+  & > p {
+    color: #009;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  & > div {
+    border: 1px solid #a5d6ff;
+    display: flex;
+    padding: 10px 20px;
+    align-items: center;
+    gap: 20px;
+    background: #daeeff;
+    .ant-select {
+      width: 130px;
+    }
+    p {
+      font-size: 20px;
+      color: #000;
+    }
+  }
+`;
+var CompareTab = dt.div`
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
+  }
+`;
+var CompareBlock = dt.div`
+  width: calc(100% - 272px);
+  .trading-container {
+    width: 100%;
+    margin-top: 10px;
+    height: calc(100% - 85px);
+  }
+`;
+var TagCommon = dt.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d9d9d9;
+  padding: 8px 12px;
+  background: #fff;
+  color: #009;
+  font-size: 16px;
+  &.bold {
+    font-weight: bold;
+  }
+  .anticon {
+    position: absolute;
+    right: -7px;
+    top: -7px;
+  }
+`;
+var TagAdd = dt.div`
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  font-size: 16px;
+  font-weight: 700;
+  background: #999;
+`;
+var FinancialTabs = dt.ul`
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  & > li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 10px;
+    background-color: #D9D9D9;
+    font-size: 16px;
+    color: #000;
+    cursor: pointer;
+    clip-path: polygon(0% 0%, 95% 0, 100% 29%, 100% 100%, 0% 100%);
+    transition: all .2s linear;
+    &:hover,
+    &.active {
+      background-color: #DAEEFF;
+    }
+  }
+`;
+var FinancialAnalysis = dt.div`
+`;
+var FinancialHeader = dt.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  .financial-quarter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    p {
+      font-size: 16px;
+      color: #000;
+    }
+  }
+`;
+var FinancialBody = dt.div`
+`;
 
 // app/components/Common/Block/index.jsx
 var import_jsx_dev_runtime = __toESM(require_jsx_dev_runtime(), 1);
@@ -1637,8 +1777,96 @@ $RefreshReg$(_c, "BlockCommon");
 window.$RefreshReg$ = prevRefreshReg;
 window.$RefreshSig$ = prevRefreshSig;
 
+// app/components/Common/Chart/index.jsx
+var import_react2 = __toESM(require_react(), 1);
+
+// app/components/Common/Chart/styled.jsx
+if (import.meta) {
+  import.meta.hot = createHotContext(
+    //@ts-expect-error
+    "app/components/Common/Chart/styled.jsx"
+  );
+  import.meta.hot.lastModified = "1757813526777.5527";
+}
+var TradingViewContainer2 = dt.div`
+  width: calc(100% - 272px);
+`;
+
+// app/components/Common/Chart/index.jsx
+var import_jsx_dev_runtime2 = __toESM(require_jsx_dev_runtime(), 1);
+if (!window.$RefreshReg$ || !window.$RefreshSig$ || !window.$RefreshRuntime$) {
+  console.warn("remix:hmr: React Fast Refresh only works when the Remix compiler is running in development mode.");
+} else {
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = (type, id) => {
+    window.$RefreshRuntime$.register(type, '"app/components/Common/Chart/index.jsx"' + id);
+  };
+  window.$RefreshSig$ = window.$RefreshRuntime$.createSignatureFunctionForTransform;
+}
+var prevRefreshReg;
+var prevRefreshSig;
+var _s = $RefreshSig$();
+if (import.meta) {
+  import.meta.hot = createHotContext(
+    //@ts-expect-error
+    "app/components/Common/Chart/index.jsx"
+  );
+  import.meta.hot.lastModified = "1757933263705.3618";
+}
+var TradingViewWidget = () => {
+  _s();
+  const container = (0, import_react2.useRef)();
+  (0, import_react2.useEffect)(() => {
+    const script = document.createElement("script");
+    script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
+    script.type = "text/javascript";
+    script.async = true;
+    script.innerHTML = `
+        {
+          "allow_symbol_change": true,
+          "calendar": false,
+          "details": false,
+          "hide_side_toolbar": true,
+          "hide_top_toolbar": false,
+          "hide_legend": false,
+          "hide_volume": false,
+          "hotlist": false,
+          "interval": "D",
+          "locale": "en",
+          "style": "1",
+          "symbol": "OANDA:XAUUSD",
+          "theme": "light",
+          "timezone": "Etc/UTC",
+          "backgroundColor": "#fff",
+          "gridColor": "rgba(198, 198, 198, 0.1)",
+          "watchlist": [],
+          "withdateranges": false,
+          "compareSymbols": [],
+          "studies": [],
+          "autosize": true
+        }`;
+    container.current.appendChild(script);
+  }, []);
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(TradingViewContainer2, { className: "trading-container", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "tradingview-widget-container", ref: container }, void 0, false, {
+    fileName: "app/components/Common/Chart/index.jsx",
+    lineNumber: 59,
+    columnNumber: 7
+  }, this) }, void 0, false, {
+    fileName: "app/components/Common/Chart/index.jsx",
+    lineNumber: 58,
+    columnNumber: 10
+  }, this);
+};
+_s(TradingViewWidget, "gP936EAkbq44zYYGRnj90r2fLhg=");
+_c2 = TradingViewWidget;
+var Chart_default = TradingViewWidget;
+var _c2;
+$RefreshReg$(_c2, "TradingViewWidget");
+window.$RefreshReg$ = prevRefreshReg;
+window.$RefreshSig$ = prevRefreshSig;
+
 export {
-  dt,
   BorderBlock,
   AnalyticsItem,
   MarketContainer,
@@ -1649,6 +1877,19 @@ export {
   AdjustContainer,
   GoldChart,
   RecommendBlock,
-  Block_default
+  SummaryAnalysis,
+  SummaryBottom,
+  BlockPriceChart,
+  PriceChartSelect,
+  CompareTab,
+  CompareBlock,
+  TagCommon,
+  TagAdd,
+  FinancialTabs,
+  FinancialAnalysis,
+  FinancialHeader,
+  FinancialBody,
+  Block_default,
+  Chart_default
 };
-//# sourceMappingURL=/build/_shared/chunk-L3SGAUKX.js.map
+//# sourceMappingURL=/build/_shared/chunk-L5ZLY5MO.js.map

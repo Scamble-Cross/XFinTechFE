@@ -1,17 +1,8 @@
 import {
   Adjust_default,
   table_default
-} from "/build/_shared/chunk-ZJIKFG2F.js";
+} from "/build/_shared/chunk-DW53F2BE.js";
 import "/build/_shared/chunk-BVOHG2V5.js";
-import {
-  Chart_default
-} from "/build/_shared/chunk-AFQT5WZ6.js";
-import {
-  Navigation,
-  Pagination,
-  Swiper,
-  SwiperSlide
-} from "/build/_shared/chunk-ONELXEGJ.js";
 import {
   AnalyticsItem,
   BlockListMeasure,
@@ -19,9 +10,16 @@ import {
   BlockPerTab,
   Block_default,
   BorderBlock,
+  Chart_default,
   MarketContainer,
   ProductionPackage
-} from "/build/_shared/chunk-L3SGAUKX.js";
+} from "/build/_shared/chunk-L5ZLY5MO.js";
+import {
+  Navigation,
+  Pagination,
+  Swiper,
+  SwiperSlide
+} from "/build/_shared/chunk-ONELXEGJ.js";
 import {
   Container_default,
   Tab_default
@@ -740,4 +738,4 @@ window.$RefreshSig$ = prevRefreshSig;
 export {
   route_default as default
 };
-//# sourceMappingURL=/build/routes/apps/dashboard/route-DE6EVRTI.js.map
+//# sourceMappingURL=/build/routes/apps/dashboard/route-PTPDAPST.js.map

@@ -207,7 +207,7 @@ var TaskInfo = ({
   const [newRecipient, setNewRecipient] = (0, import_react.useState)("");
   const [ApexChart, setApexChart] = (0, import_react.useState)();
   (0, import_react.useEffect)(() => {
-    import("/build/_shared/react-apexcharts.min-GALRVMXX.js").then((d) => setApexChart(() => d.default.default));
+    import("/build/_shared/react-apexcharts.min-RE4BKCHU.js").then((d) => setApexChart(() => d.default.default));
   }, []);
   const handleRecipients = () => {
     setRecipients((recipients2) => recipients2.concat(newRecipient));
@@ -4814,4 +4814,4 @@ window.$RefreshSig$ = prevRefreshSig;
 export {
   route_default as default
 };
-//# sourceMappingURL=/build/routes/apps/todo/task-list/route-6F74VRLT.js.map
+//# sourceMappingURL=/build/routes/apps/todo/task-list/route-57GFNWVX.js.map

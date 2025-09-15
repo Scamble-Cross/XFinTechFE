@@ -23,7 +23,7 @@ const TradingViewWidget = () => {
           "interval": "D",
           "locale": "en",
           "style": "1",
-          "symbol": "FX:EURUSD",
+          "symbol": "OANDA:XAUUSD",
           "theme": "light",
           "timezone": "Etc/UTC",
           "backgroundColor": "#fff",
@@ -38,7 +38,7 @@ const TradingViewWidget = () => {
   }, []);
 
   return (
-    <TradingViewContainer>
+    <TradingViewContainer className="trading-container">
       <div className="tradingview-widget-container" ref={container}></div>
     </TradingViewContainer>
   );

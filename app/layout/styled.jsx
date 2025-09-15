@@ -220,3 +220,143 @@ export const RecommendBlock = styled.div`
     }
   }
 `;
+export const SummaryAnalysis = styled.div`
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 30px;
+  & > div {
+    display: block;
+    width: 270px;
+    height: 150px;
+    background: #daeeff;
+  }
+  & > p {
+    color: #009;
+    font-size: 20px;
+    text-decoration: underline;
+  }
+`;
+export const SummaryBottom = styled.div`
+  h3 {
+    font-size: 20px;
+    color: #000;
+    margin-bottom: 30px;
+  }
+`;
+export const BlockPriceChart = styled.div`
+  margin-bottom: 30px;
+`;
+export const PriceChartSelect = styled.div`
+  margin-bottom: 30px;
+  & > p {
+    color: #009;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  & > div {
+    border: 1px solid #a5d6ff;
+    display: flex;
+    padding: 10px 20px;
+    align-items: center;
+    gap: 20px;
+    background: #daeeff;
+    .ant-select {
+      width: 130px;
+    }
+    p {
+      font-size: 20px;
+      color: #000;
+    }
+  }
+`;
+export const CompareTab = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
+  }
+`;
+export const CompareBlock = styled.div`
+  width: calc(100% - 272px);
+  .trading-container {
+    width: 100%;
+    margin-top: 10px;
+    height: calc(100% - 85px);
+  }
+`;
+export const TagCommon = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d9d9d9;
+  padding: 8px 12px;
+  background: #fff;
+  color: #009;
+  font-size: 16px;
+  &.bold {
+    font-weight: bold;
+  }
+  .anticon {
+    position: absolute;
+    right: -7px;
+    top: -7px;
+  }
+`;
+export const TagAdd = styled.div`
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  font-size: 16px;
+  font-weight: 700;
+  background: #999;
+`;
+export const FinancialTabs = styled.ul`
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  & > li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 10px;
+    background-color: #D9D9D9;
+    font-size: 16px;
+    color: #000;
+    cursor: pointer;
+    clip-path: polygon(0% 0%, 95% 0, 100% 29%, 100% 100%, 0% 100%);
+    transition: all .2s linear;
+    &:hover,
+    &.active {
+      background-color: #DAEEFF;
+    }
+  }
+`
+export const FinancialAnalysis = styled.div`
+`
+export const FinancialHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  .financial-quarter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    p {
+      font-size: 16px;
+      color: #000;
+    }
+  }
+`
+export const FinancialBody = styled.div`
+`

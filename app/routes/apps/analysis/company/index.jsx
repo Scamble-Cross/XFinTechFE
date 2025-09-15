@@ -1,10 +1,36 @@
-import { Table } from "antd";
+import { DatePicker, Select, Table } from "antd";
 import { Container, Tab } from "react-bootstrap";
 import BlockCommon from "~/components/Common/Block";
-import { RecommendBlock } from "~/layout/styled";
+import {
+  AnalyticsItem,
+  BlockPriceChart,
+  BorderBlock,
+  CompareBlock,
+  CompareTab,
+  FinancialAnalysis,
+  FinancialBody,
+  FinancialHeader,
+  FinancialTabs,
+  MarketContainer,
+  PriceChartSelect,
+  RecommendBlock,
+  SummaryAnalysis,
+  SummaryBottom,
+  TagAdd,
+  TagCommon,
+} from "~/layout/styled";
 import AdjustValue from "../../dashboard/Top/Adjust";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+import { useState } from "react";
+import TradingViewWidget from "~/components/Common/Chart";
+import { CloseOutlined } from "@ant-design/icons";
+import BvpsChart from "~/components/Financial/Chart";
+import RankingChart from "~/components/Financial/SubChart";
 
 const Company = () => {
+  const [selected, setSelected] = useState("Ngân hàng TMCP Á Châu");
+
   const columns = [
     {
       title: "Mã CK",
@@ -102,6 +128,107 @@ const Company = () => {
       percent: 5.97,
     },
   ];
+
+  const analyticsData = [
+    {
+      id: 1,
+      title: "Tiêu đề",
+    },
+    {
+      id: 2,
+      title: "Tiêu đề",
+    },
+    {
+      id: 3,
+      title: "Tiêu đề",
+    },
+    {
+      id: 4,
+      title: "Tiêu đề",
+    },
+    {
+      id: 5,
+      title: "Tiêu đề",
+    },
+    {
+      id: 6,
+      title: "Tiêu đề",
+    },
+    {
+      id: 7,
+      title: "Tiêu đề",
+    },
+    {
+      id: 8,
+      title: "Tiêu đề",
+    },
+    {
+      id: 9,
+      title: "Tiêu đề",
+    },
+    {
+      id: 10,
+      title: "Tiêu đề",
+    },
+  ];
+
+  const priceChartData = [
+    { value: "Ngân hàng TMCP Á Châu", label: "ACB" },
+    { value: "Ngân hàng Techcombank", label: "TCB" },
+    { value: "Ngân hàng BIDV", label: "BIDV" },
+    { value: "Ngân hàng số Lio", label: "Lio" },
+  ];
+
+  const dataAdd = [
+    { id: 1, tag: "BIDV" },
+    { id: 2, tag: "TCB" },
+    { id: 3, tag: "Lio" },
+  ];
+
+  const financialTabs = [
+    {
+      id: 1,
+      text: "Chỉ số định giá",
+    },
+    {
+      id: 2,
+      text: "Khả năng sinh lời",
+    },
+    {
+      id: 3,
+      text: "Chỉ số thanh khoản",
+    },
+    {
+      id: 4,
+      text: "Hiệu quả hoạt động",
+    },
+    {
+      id: 5,
+      text: "Cơ cấu nguồn vốn",
+    },
+  ];
+
+  const handleChange = (value) => {
+    setSelected(value);
+  };
+
+  const handleConvertData = () => {
+    switch (selected) {
+      case "Ngân hàng TMCP Á Châu":
+        return "ACB";
+      case "Ngân hàng Techcombank":
+        return "Techcombank";
+      case "Ngân hàng BIDV":
+        return "BIDV";
+      case "Ngân hàng số Lio":
+        return "Lio";
+    }
+  };
+
+  const onChange = (date, dateString) => {
+    console.log(date, dateString);
+  };
+
   return (
     <Container fluid="xxl" className="pt-4">
       <Tab.Container activeKey="overview">
@@ -116,6 +243,151 @@ const Company = () => {
                 pagination={{ hideOnSinglePage: true, pageSize: 20 }}
               />
             </RecommendBlock>
+          }
+        />
+        <BlockPriceChart>
+          <PriceChartSelect>
+            <p>Chọn Mã chứng khoán</p>
+            <div>
+              <Select
+                defaultValue="ACB"
+                onChange={handleChange}
+                options={priceChartData}
+              />
+              <p>{selected}</p>
+            </div>
+          </PriceChartSelect>
+          <BlockCommon
+            title="Biểu đồ giá"
+            component={
+              <MarketContainer>
+                <CompareBlock>
+                  <BorderBlock>
+                    <CompareTab>
+                      <TagCommon className="bold">
+                        {handleConvertData()}
+                      </TagCommon>
+                      <TagAdd>Thêm mã so sánh</TagAdd>
+                      <ul>
+                        {dataAdd.map((item) => {
+                          return (
+                            <TagCommon key={item.id}>
+                              <CloseOutlined
+                                style={{
+                                  color: "#C00000",
+                                }}
+                              />
+                              {item.tag}
+                            </TagCommon>
+                          );
+                        })}
+                      </ul>
+                    </CompareTab>
+                  </BorderBlock>
+                  <TradingViewWidget />
+                </CompareBlock>
+                <BorderBlock className="market-right">
+                  <div className="swiper-verical">
+                    <Swiper
+                      loop={true}
+                      direction="vertical"
+                      slidesPerView={"auto"}
+                      spaceBetween={15}
+                      navigation={true}
+                      modules={[Pagination, Navigation]}
+                    >
+                      {analyticsData.map((item) => (
+                        <SwiperSlide key={item.id}>
+                          <AnalyticsItem>
+                            <div></div>
+                            <p>{item.title}</p>
+                          </AnalyticsItem>
+                        </SwiperSlide>
+                      ))}
+                    </Swiper>
+                  </div>
+                </BorderBlock>
+              </MarketContainer>
+            }
+          />
+        </BlockPriceChart>
+        <BlockCommon
+          title="Phân tích tài chính"
+          component={
+            <div>
+              <FinancialTabs>
+                {financialTabs.map((item) => {
+                  return <li key={item.id}>{item.text}</li>;
+                })}
+              </FinancialTabs>
+              <BorderBlock>
+                <FinancialAnalysis>
+                  <FinancialHeader>
+                    <CompareTab>
+                      <TagCommon className="bold">
+                        {handleConvertData()}
+                      </TagCommon>
+                      <TagAdd>Thêm mã so sánh</TagAdd>
+                      <ul>
+                        {dataAdd.map((item) => {
+                          return (
+                            <TagCommon key={item.id}>
+                              <CloseOutlined
+                                style={{
+                                  color: "#C00000",
+                                }}
+                              />
+                              {item.tag}
+                            </TagCommon>
+                          );
+                        })}
+                      </ul>
+                    </CompareTab>
+                    <div className="financial-quarter">
+                      <p>Kỳ BCTC</p>
+                      <DatePicker onChange={onChange} picker="quarter" placeholder="Chọn quý" />
+                      <DatePicker onChange={onChange} picker="quarter" placeholder="Chọn quý" />
+                    </div>
+                  </FinancialHeader>
+                  <FinancialBody>
+                    <BvpsChart />
+                    <RankingChart />
+                  </FinancialBody>
+                </FinancialAnalysis>
+              </BorderBlock>
+            </div>
+          }
+        />
+        <BlockCommon
+          title="Báo cáo phân tích công ty"
+          component={
+            <>
+              <SummaryAnalysis>
+                <div></div>
+                <p>Báo cáo phân tích - ACB - 2025 - Q1.pdf</p>
+              </SummaryAnalysis>
+              <SummaryBottom>
+                <h3>Báo cáo phân tích khác</h3>
+                <BorderBlock>
+                  <Swiper
+                    loop={true}
+                    slidesPerView={5}
+                    spaceBetween={15}
+                    navigation={true}
+                    modules={[Pagination, Navigation]}
+                  >
+                    {analyticsData.map((item) => (
+                      <SwiperSlide key={item.id}>
+                        <AnalyticsItem>
+                          <div></div>
+                          <p>{item.title}</p>
+                        </AnalyticsItem>
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                </BorderBlock>
+              </SummaryBottom>
+            </>
           }
         />
       </Tab.Container>

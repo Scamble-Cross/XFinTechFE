@@ -10906,7 +10906,10 @@ var require_react_apexcharts_min = __commonJS({
     Charts.propTypes = { type: _propTypes.default.string.isRequired, series: _propTypes.default.array.isRequired, options: _propTypes.default.object.isRequired, width: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]), height: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]) };
   }
 });
-export default require_react_apexcharts_min();
+
+export {
+  require_react_apexcharts_min
+};
 /*! Bundled license information:
 
 apexcharts/dist/apexcharts.esm.js:
@@ -10935,4 +10938,4 @@ apexcharts/dist/apexcharts.esm.js:
   * BUILT: Fri Sep 13 2024 12:43:14 GMT+0200 (Central European Summer Time)
   *)
 */
-//# sourceMappingURL=/build/_shared/react-apexcharts.min-GALRVMXX.js.map
+//# sourceMappingURL=/build/_shared/chunk-MMNNIOF2.js.map

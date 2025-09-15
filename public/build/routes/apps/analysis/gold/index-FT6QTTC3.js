@@ -1,18 +1,16 @@
 import {
-  Chart_default
-} from "/build/_shared/chunk-AFQT5WZ6.js";
+  AnalyticsItem,
+  Block_default,
+  BorderBlock,
+  Chart_default,
+  GoldChart
+} from "/build/_shared/chunk-L5ZLY5MO.js";
 import {
   Navigation,
   Pagination,
   Swiper,
   SwiperSlide
 } from "/build/_shared/chunk-ONELXEGJ.js";
-import {
-  AnalyticsItem,
-  Block_default,
-  BorderBlock,
-  GoldChart
-} from "/build/_shared/chunk-L3SGAUKX.js";
 import {
   Container_default,
   Tab_default
@@ -151,4 +149,4 @@ window.$RefreshSig$ = prevRefreshSig;
 export {
   gold_default as default
 };
-//# sourceMappingURL=/build/routes/apps/analysis/gold/index-7HT7ZGCD.js.map
+//# sourceMappingURL=/build/routes/apps/analysis/gold/index-FT6QTTC3.js.map
