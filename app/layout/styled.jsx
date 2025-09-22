@@ -328,20 +328,19 @@ export const FinancialTabs = styled.ul`
     align-items: center;
     justify-content: center;
     padding: 8px 10px;
-    background-color: #D9D9D9;
+    background-color: #d9d9d9;
     font-size: 16px;
     color: #000;
     cursor: pointer;
     clip-path: polygon(0% 0%, 95% 0, 100% 29%, 100% 100%, 0% 100%);
-    transition: all .2s linear;
+    transition: all 0.2s linear;
     &:hover,
     &.active {
-      background-color: #DAEEFF;
+      background-color: #daeeff;
     }
   }
-`
-export const FinancialAnalysis = styled.div`
-`
+`;
+export const FinancialAnalysis = styled.div``;
 export const FinancialHeader = styled.div`
   display: flex;
   justify-content: space-between;
@@ -357,6 +356,84 @@ export const FinancialHeader = styled.div`
       color: #000;
     }
   }
-`
-export const FinancialBody = styled.div`
-`
+`;
+export const FinancialBody = styled.div``;
+export const ScaleContainer = styled.div`
+  background-color: #f5f5f5;
+  border: 1px solid #d9d9d9;
+  padding: 5px;
+`;
+export const ScaleList = styled.ul`
+  display: flex;
+  gap: 5px;
+  padding: 0;
+  margin: 0 0 5px;
+  & > li {
+    width: 33.33%;
+    background-color: #fff;
+    border: 1px solid #d9d9d9;
+  }
+`;
+export const PopoverScale = styled.div`
+  p {
+    position: relative;
+    color: #009;
+    font-size: 14px;
+    font-weight: 300;
+    cursor: pointer;
+    width: max-content;
+    &:hover {
+      opacity: 0.85;
+      &::before {
+        width: 100%;
+      }
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      width: 0;
+      transform: translate(-50%, -50%);
+      left: 50%;
+      bottom: -2px;
+      height: 1px;
+      background-color: #009;
+      transition: all 0.15s linear;
+    }
+  }
+`;
+export const FilterPrice = styled.div`
+  position: relative;
+  h3 {
+    position: absolute;
+    background-color: #fff;
+    padding: 5px 10px;
+    font-size: 16px;
+    color: #009;
+    font-weight: 400;
+    top: -32px;
+  }
+  & > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    .ant-slider {
+      width: 300px;
+    }
+  }
+`;
+export const MatchingContainer = styled.div`
+  margin-top: 25px;
+  thead {
+    th {
+      padding: 5px !important;
+      background-color: transparent !important;
+      color: #000099 !important;
+      font-weight: bold !important;
+    }
+  }
+  tbody {
+    td {
+      padding: 5px !important;
+    }
+  }
+`;

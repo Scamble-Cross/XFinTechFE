@@ -25239,6 +25239,14 @@ div.hopscotch-bubble {
 	}
 }
 
+.ant-modal-root .ant-modal-wrap {
+  z-index: 9999;
+}
+
+.ant-modal-footer {
+	margin: 0 !important;
+}
+
 /****************************/
 /** Componets Import **/
 /****************************/
