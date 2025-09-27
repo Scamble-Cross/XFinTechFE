@@ -317,6 +317,7 @@ export const TagAdd = styled.div`
   font-size: 16px;
   font-weight: 700;
   background: #999;
+  cursor: pointer;
 `;
 export const FinancialTabs = styled.ul`
   padding: 0;
@@ -434,6 +435,34 @@ export const MatchingContainer = styled.div`
   tbody {
     td {
       padding: 5px !important;
+    }
+  }
+`;
+export const ModalAddContainer = styled.div`
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+`;
+export const AddActions = styled.ul`
+  padding: 0;
+  margin: 0;
+  & > li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #999;
+    min-width: 100px;
+    height: 34px;
+    background: #d9d9d9;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s linear;
+    &:hover {
+      opacity: 0.75;
+    }
+    &:not(:last-child) {
+      margin-bottom: 10px;
     }
   }
 `;

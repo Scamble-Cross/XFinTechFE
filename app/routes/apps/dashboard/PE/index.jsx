@@ -1,20 +1,8 @@
-import { useState } from "react";
 import AdjustValue from "../Top/Adjust";
 import { Table } from "antd";
-import { BlockPerCommon, BlockPerTab } from "~/layout/styled";
+import { BlockPerCommon } from "~/layout/styled";
 
 const PE = () => {
-  const [activeTab, setActiveTab] = useState(1);
-  const tabs = [
-    {
-      id: 1,
-      title: "TAB 1",
-    },
-    {
-      id: 2,
-      title: "TAB 2",
-    },
-  ];
   const columns = [
     {
       title: "",
@@ -87,24 +75,10 @@ const PE = () => {
       percent: 6.20,
     },
   ];
+
   return (
     <BlockPerCommon>
       <h3>P/E ngành</h3>
-      <BlockPerTab>
-        {tabs.map((item) => {
-          return (
-            <li
-              key={item.id}
-              className={item.id === activeTab ? "active" : ""}
-              onClick={() => {
-                setActiveTab(item.id);
-              }}
-            >
-              {item.title}
-            </li>
-          );
-        })}
-      </BlockPerTab>
       <Table
         columns={columns}
         dataSource={data}

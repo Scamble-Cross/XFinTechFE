@@ -1,4 +1,4 @@
-import { DatePicker, Select, Table } from "antd";
+import { DatePicker, Modal, Select, Table } from "antd";
 import { Container, Tab } from "react-bootstrap";
 import BlockCommon from "~/components/Common/Block";
 import {
@@ -27,9 +27,11 @@ import TradingViewWidget from "~/components/Common/Chart";
 import { CloseOutlined } from "@ant-design/icons";
 import BvpsChart from "~/components/Financial/Chart";
 import RankingChart from "~/components/Financial/SubChart";
+import ModalAdd from "~/components/Common/Modal/Add";
 
 const Company = () => {
   const [selected, setSelected] = useState("Ngân hàng TMCP Á Châu");
+  const [isModalAdd, setIsModalAdd] = useState(false);
 
   const columns = [
     {
@@ -229,69 +231,178 @@ const Company = () => {
     console.log(date, dateString);
   };
 
+  const handleOkAdd = () => {
+    setIsModalAdd(false);
+  };
+
+  const handleCancelAdd = () => {
+    setIsModalAdd(false);
+  };
+
   return (
-    <Container fluid="xxl" className="pt-4">
-      <Tab.Container activeKey="overview">
-        <BlockCommon
-          title="Danh sách VSMI khuyến nghị"
-          component={
-            <RecommendBlock>
-              <Table
-                bordered
-                columns={columns}
-                dataSource={data}
-                pagination={{ hideOnSinglePage: true, pageSize: 20 }}
-              />
-            </RecommendBlock>
-          }
-        />
-        <BlockPriceChart>
-          <PriceChartSelect>
-            <p>Chọn Mã chứng khoán</p>
-            <div>
-              <Select
-                defaultValue="ACB"
-                onChange={handleChange}
-                options={priceChartData}
-              />
-              <p>{selected}</p>
-            </div>
-          </PriceChartSelect>
+    <>
+      <Container fluid="xxl" className="pt-4">
+        <Tab.Container activeKey="overview">
           <BlockCommon
-            title="Biểu đồ giá"
+            title="Danh sách VSMI khuyến nghị"
             component={
-              <MarketContainer>
-                <CompareBlock>
-                  <BorderBlock>
-                    <CompareTab>
-                      <TagCommon className="bold">
-                        {handleConvertData()}
-                      </TagCommon>
-                      <TagAdd>Thêm mã so sánh</TagAdd>
-                      <ul>
-                        {dataAdd.map((item) => {
-                          return (
-                            <TagCommon key={item.id}>
-                              <CloseOutlined
-                                style={{
-                                  color: "#C00000",
-                                }}
-                              />
-                              {item.tag}
-                            </TagCommon>
-                          );
-                        })}
-                      </ul>
-                    </CompareTab>
+              <RecommendBlock>
+                <Table
+                  bordered
+                  columns={columns}
+                  dataSource={data}
+                  pagination={{ hideOnSinglePage: true, pageSize: 20 }}
+                />
+              </RecommendBlock>
+            }
+          />
+          <BlockPriceChart>
+            <PriceChartSelect>
+              <p>Chọn Mã chứng khoán</p>
+              <div>
+                <Select
+                  defaultValue="ACB"
+                  onChange={handleChange}
+                  options={priceChartData}
+                />
+                <p>{selected}</p>
+              </div>
+            </PriceChartSelect>
+            <BlockCommon
+              title="Biểu đồ giá"
+              component={
+                <MarketContainer>
+                  <CompareBlock>
+                    <BorderBlock>
+                      <CompareTab>
+                        <TagCommon className="bold">
+                          {handleConvertData()}
+                        </TagCommon>
+                        <TagAdd
+                          onClick={() => {
+                            setIsModalAdd(true);
+                          }}
+                        >
+                          Thêm mã so sánh
+                        </TagAdd>
+                        <ul>
+                          {dataAdd.map((item) => {
+                            return (
+                              <TagCommon key={item.id}>
+                                <CloseOutlined
+                                  style={{
+                                    color: "#C00000",
+                                  }}
+                                />
+                                {item.tag}
+                              </TagCommon>
+                            );
+                          })}
+                        </ul>
+                      </CompareTab>
+                    </BorderBlock>
+                    <TradingViewWidget />
+                  </CompareBlock>
+                  <BorderBlock className="market-right">
+                    <div className="swiper-verical">
+                      <Swiper
+                        loop={true}
+                        direction="vertical"
+                        slidesPerView={"auto"}
+                        spaceBetween={15}
+                        navigation={true}
+                        modules={[Pagination, Navigation]}
+                      >
+                        {analyticsData.map((item) => (
+                          <SwiperSlide key={item.id}>
+                            <AnalyticsItem>
+                              <div></div>
+                              <p>{item.title}</p>
+                            </AnalyticsItem>
+                          </SwiperSlide>
+                        ))}
+                      </Swiper>
+                    </div>
                   </BorderBlock>
-                  <TradingViewWidget />
-                </CompareBlock>
-                <BorderBlock className="market-right">
-                  <div className="swiper-verical">
+                </MarketContainer>
+              }
+            />
+          </BlockPriceChart>
+          <BlockCommon
+            title="Phân tích tài chính"
+            component={
+              <div>
+                <FinancialTabs>
+                  {financialTabs.map((item) => {
+                    return <li key={item.id}>{item.text}</li>;
+                  })}
+                </FinancialTabs>
+                <BorderBlock>
+                  <FinancialAnalysis>
+                    <FinancialHeader>
+                      <CompareTab>
+                        <TagCommon className="bold">
+                          {handleConvertData()}
+                        </TagCommon>
+                        <TagAdd
+                          onClick={() => {
+                            setIsModalAdd(true);
+                          }}
+                        >
+                          Thêm mã so sánh
+                        </TagAdd>
+                        <ul>
+                          {dataAdd.map((item) => {
+                            return (
+                              <TagCommon key={item.id}>
+                                <CloseOutlined
+                                  style={{
+                                    color: "#C00000",
+                                  }}
+                                />
+                                {item.tag}
+                              </TagCommon>
+                            );
+                          })}
+                        </ul>
+                      </CompareTab>
+                      <div className="financial-quarter">
+                        <p>Kỳ BCTC</p>
+                        <DatePicker
+                          onChange={onChange}
+                          picker="quarter"
+                          placeholder="Chọn quý"
+                        />
+                        <DatePicker
+                          onChange={onChange}
+                          picker="quarter"
+                          placeholder="Chọn quý"
+                        />
+                      </div>
+                    </FinancialHeader>
+                    <FinancialBody>
+                      <BvpsChart />
+                      <RankingChart />
+                    </FinancialBody>
+                  </FinancialAnalysis>
+                </BorderBlock>
+              </div>
+            }
+          />
+          <BlockCommon
+            title="Báo cáo phân tích công ty"
+            component={
+              <>
+                <SummaryAnalysis>
+                  <div></div>
+                  <p>Báo cáo phân tích - ACB - 2025 - Q1.pdf</p>
+                </SummaryAnalysis>
+                <SummaryBottom>
+                  <h3>Báo cáo phân tích khác</h3>
+                  <BorderBlock>
                     <Swiper
                       loop={true}
-                      direction="vertical"
-                      slidesPerView={"auto"}
+                      slidesPerView={5}
                       spaceBetween={15}
                       navigation={true}
                       modules={[Pagination, Navigation]}
@@ -305,93 +416,24 @@ const Company = () => {
                         </SwiperSlide>
                       ))}
                     </Swiper>
-                  </div>
-                </BorderBlock>
-              </MarketContainer>
+                  </BorderBlock>
+                </SummaryBottom>
+              </>
             }
           />
-        </BlockPriceChart>
-        <BlockCommon
-          title="Phân tích tài chính"
-          component={
-            <div>
-              <FinancialTabs>
-                {financialTabs.map((item) => {
-                  return <li key={item.id}>{item.text}</li>;
-                })}
-              </FinancialTabs>
-              <BorderBlock>
-                <FinancialAnalysis>
-                  <FinancialHeader>
-                    <CompareTab>
-                      <TagCommon className="bold">
-                        {handleConvertData()}
-                      </TagCommon>
-                      <TagAdd>Thêm mã so sánh</TagAdd>
-                      <ul>
-                        {dataAdd.map((item) => {
-                          return (
-                            <TagCommon key={item.id}>
-                              <CloseOutlined
-                                style={{
-                                  color: "#C00000",
-                                }}
-                              />
-                              {item.tag}
-                            </TagCommon>
-                          );
-                        })}
-                      </ul>
-                    </CompareTab>
-                    <div className="financial-quarter">
-                      <p>Kỳ BCTC</p>
-                      <DatePicker onChange={onChange} picker="quarter" placeholder="Chọn quý" />
-                      <DatePicker onChange={onChange} picker="quarter" placeholder="Chọn quý" />
-                    </div>
-                  </FinancialHeader>
-                  <FinancialBody>
-                    <BvpsChart />
-                    <RankingChart />
-                  </FinancialBody>
-                </FinancialAnalysis>
-              </BorderBlock>
-            </div>
-          }
-        />
-        <BlockCommon
-          title="Báo cáo phân tích công ty"
-          component={
-            <>
-              <SummaryAnalysis>
-                <div></div>
-                <p>Báo cáo phân tích - ACB - 2025 - Q1.pdf</p>
-              </SummaryAnalysis>
-              <SummaryBottom>
-                <h3>Báo cáo phân tích khác</h3>
-                <BorderBlock>
-                  <Swiper
-                    loop={true}
-                    slidesPerView={5}
-                    spaceBetween={15}
-                    navigation={true}
-                    modules={[Pagination, Navigation]}
-                  >
-                    {analyticsData.map((item) => (
-                      <SwiperSlide key={item.id}>
-                        <AnalyticsItem>
-                          <div></div>
-                          <p>{item.title}</p>
-                        </AnalyticsItem>
-                      </SwiperSlide>
-                    ))}
-                  </Swiper>
-                </BorderBlock>
-              </SummaryBottom>
-            </>
-          }
-        />
-      </Tab.Container>
-    </Container>
+        </Tab.Container>
+      </Container>
+      <Modal
+        closable={false}
+        open={isModalAdd}
+        onOk={handleOkAdd}
+        onCancel={handleCancelAdd}
+        footer={false}
+        width={700}
+      >
+        <ModalAdd handleCancelAdd={handleCancelAdd} />
+      </Modal>
+    </>
   );
 };
 

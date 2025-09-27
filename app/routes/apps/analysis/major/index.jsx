@@ -7,8 +7,10 @@ import BlockCommon from "~/components/Common/Block";
 import PieChart from "~/components/Common/Chart/Pie";
 import SectorChart from "~/components/Common/Chart/Sector";
 import BvpsChart from "~/components/Financial/Chart";
-import ModalChart from "./Modal/Chart";
-import ModalMatching from "./Modal/Matching";
+import ModalChart from "~/components/Common/Modal/Chart";
+import ModalAdd from "~/components/Common/Modal/Add";
+import ModalMatching from "~/components/Common/Modal/Matching";
+
 import {
   AnalyticsItem,
   BorderBlock,
@@ -29,6 +31,7 @@ const Major = () => {
   const [selected, setSelected] = useState(1);
   const [isModalMatching, setIsModalMatching] = useState(false);
   const [isModalChart, setIsModalChart] = useState(false);
+  const [isModalAdd, setIsModalAdd] = useState(false);
 
   const selectData = [
     { value: 1, label: "Bất động sản" },
@@ -231,6 +234,14 @@ const Major = () => {
     setIsModalChart(false);
   };
 
+  const handleOkAdd = () => {
+    setIsModalAdd(false);
+  };
+
+  const handleCancelAdd = () => {
+    setIsModalAdd(false);
+  };
+
   return (
     <>
       <Container fluid="xxl" className="pt-4">
@@ -300,7 +311,13 @@ const Major = () => {
                   <FinancialHeader>
                     <CompareTab>
                       <TagCommon className="bold">Bất động sản</TagCommon>
-                      <TagAdd>Thêm ngành so sánh</TagAdd>
+                      <TagAdd
+                        onClick={() => {
+                          setIsModalAdd(true);
+                        }}
+                      >
+                        Thêm ngành so sánh
+                      </TagAdd>
                     </CompareTab>
                     <div className="financial-quarter">
                       <DatePicker
@@ -389,6 +406,16 @@ const Major = () => {
           />
         </Tab.Container>
       </Container>
+      <Modal
+        closable={false}
+        open={isModalAdd}
+        onOk={handleOkAdd}
+        onCancel={handleCancelAdd}
+        footer={false}
+        width={700}
+      >
+        <ModalAdd handleCancelAdd={handleCancelAdd} />
+      </Modal>
       <Modal
         closable={{ "aria-label": "Custom Close Button" }}
         open={isModalMatching}
